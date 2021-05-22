@@ -27,7 +27,19 @@ export default function Register() {
             <Heading fontSize="24px">Welcome to Discord</Heading>
           </Box>
           <Box my={4} textAlign="left">
-            <Form>
+            <Formik
+              initialValues={{
+                email: "",
+                username: "",
+                password: ""
+              }}
+              validationSchema={RegisterSchema}
+              onSubmit={(values) =>
+                console.log(values)
+              }
+            >
+              {() => (
+                <Form>
               <InputField
                 label="Email"
                 name="email"
@@ -64,6 +76,8 @@ export default function Register() {
                 </Link>
               </Text>
             </Form>
+              )}
+            </Formik>
           </Box>
         </Box>
       </Box>
